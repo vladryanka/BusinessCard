@@ -1,6 +1,7 @@
 package com.smorzhok.businesscard
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -11,19 +12,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.smorzhok.businesscard.ui.theme.BusinessCardTheme
 
+
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("MainActivity", "OnCreate Method");
         setContent {
             BusinessCardTheme {
                 // A surface container using the 'background' color from the theme
@@ -40,6 +41,40 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+        finish()
+    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.d("MainActivity", "onSaveInstanceState Method")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("MainActivity", "onResume Method")
+    }
+    override fun onRestart() {
+        super.onRestart()
+        Log.d("MainActivity", "onRestart Method")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("MainActivity", "onPause Method")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("MainActivity", "onStop Method")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("MainActivity", "onStart Method")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("MainActivity", "onDestroy Method")
     }
 }
 
@@ -70,12 +105,14 @@ fun CardImage(
         )
         CardText(
             name = name,
-            modifier = Modifier.align(Alignment.CenterHorizontally)
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
                 .padding(8.dp)
         )
         CardText(
             name = "Android Developer Extraordinaire",
-            modifier = Modifier.align(Alignment.CenterHorizontally)
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
                 .padding(8.dp)
         )
 
@@ -87,7 +124,9 @@ fun CardImage(
             Image(
                 painter = phoneImg,
                 contentDescription = null,
-                modifier = Modifier.size(64.dp).padding(16.dp),
+                modifier = Modifier
+                    .size(64.dp)
+                    .padding(16.dp),
                 alpha = 0.5F
             )
             CardText(
@@ -105,7 +144,9 @@ fun CardImage(
             Image(
                 painter = mailImg,
                 contentDescription = null,
-                modifier = Modifier.size(64.dp).padding(16.dp),
+                modifier = Modifier
+                    .size(64.dp)
+                    .padding(16.dp),
                 alpha = 0.5F
             )
             CardText(
@@ -122,7 +163,9 @@ fun CardImage(
             Image(
                 painter = idImg,
                 contentDescription = null,
-                modifier = Modifier.size(64.dp).padding(16.dp),
+                modifier = Modifier
+                    .size(64.dp)
+                    .padding(16.dp),
                 alpha = 0.5F
             )
             CardText(
